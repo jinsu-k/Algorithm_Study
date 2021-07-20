@@ -18,39 +18,23 @@
 import sys
 
 C = int(sys.stdin.readline())
-s_Avg = [0]*C
 
-for i in range(0, C):
-    avg = 0
+avg_List = []
+
+for i in range(0,C):
     count = 0
-    over_avg = []
-    N = sys.stdin.readline().strip().split()
-    N = list(map(int, N))
-
-    avg = ((sum(N)-N[0])/N[0])
-
-    over_avg = list(filter(lambda x: x > avg, N))
-    count = len(over_avg)
-    s_Avg[i] = ((count/N[0])*100) 
-
-for score in s_Avg:
-    print('%.3f%' % round(score,3))
-
-
-    # import sys
-
-# C = int(sys.stdin.readline())
-# avg_Score = [0]*C
-# temp_List = []
-
-# for i in range(0,C):
-#     avg = 0
-#     N = sys.stdin.readline().strip().split()
-#     N = list(map(int, N))
+    test_Input = list(map(int, input().split()))
     
-#     avg = ((sum(N)-N[0])/N[0])
-#     temp_List = [i for i in N if ((i!=N[0]) and (i>avg))]
-#     avg_Score[i] = (((len(temp_List)/N[0])*100)+1e-15)
+    input_Avg = round((sum(test_Input)-test_Input[0])/test_Input[0], 3)
 
-# for score in avg_Score:
-#     print('%.3f%' %round(score,3))
+    for j in test_Input:
+        if(j == test_Input[0]): 
+            continue
+        elif( j > input_Avg):
+            count += 1
+
+    avg_List.append((count/test_Input[0])*100)
+
+for i in avg_List:
+    print("{:.3f}%".format(i))
+
